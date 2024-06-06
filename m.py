@@ -224,7 +224,7 @@ def handle_bgmi(message):
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
             if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 180:
-                response = "You Are On Cooldown ❌. Please Wait 3min Before Running The /attack Command Again."
+                response = "You Are On Cooldown ❌. Please Wait 3min Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -238,7 +238,7 @@ def handle_bgmi(message):
             if time > 301:
                 response = "Error: Time interval must be less than 300."
             else:
-                record_command_logs(user_id, '/attack', target, port, time)
+                record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
                 full_command = f"./bgmi {target} {port} {time} 300"
